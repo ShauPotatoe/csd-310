@@ -22,7 +22,10 @@ config = {
 def show_menu():
     print("\n  -- Main Menu --")
 
-    print("    1. View Books\n    2. View Store Locations\n    3. My Account\n    4. Exit Program")
+    print("1. View Books")
+    print("2. View Store Locations")
+    print("3. My Account")    
+    print("4. Exit Program")
 
     try:
         choice = int(input('      <Example enter: 1 for book listing>: '))
@@ -36,7 +39,7 @@ def show_menu():
 """Create a method for “show_books(_cursor)” """
 def show_books(_cursor):
     # inner join query 
-    _cursor.execute("SELECT book_id, book_name, author, details from book")
+    _cursor.execute("SELECT book_name, author, details from book")
 
     # get the results from the cursor object 
     books = _cursor.fetchall()
@@ -179,14 +182,14 @@ try:
                     print("\n        Book id: {} was added to your wishlist!".format(book_id))
 
                 # if the selected option is less than 0 or greater than 3, display an invalid user selection 
-                if account_option < 0 or account_option > 3:
+                if account_option < 0 or account_option > 3 or None:
                     print("\n      Invalid option, please retry...")
 
                 # show the account menu 
                 account_option = show_account_menu()
         
         # if the user selection is less than 0 or greater than 4, display an invalid user selection
-        if user_selection < 0 or user_selection > 4:
+        if user_selection < 0 or user_selection > 4 or None:
             print("\n      Invalid option, please retry...")
             
         # show the main menu
